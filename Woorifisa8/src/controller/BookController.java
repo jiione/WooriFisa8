@@ -18,6 +18,7 @@ public class BookController {
 
     public void borrowBook(String isbn, User user) {
         Book book = libraryService.borrowBook(isbn, user);
+        
         if (book != null) {
             EndView.successMessage("Book borrowed successfully: " + book.getTitle());
         } else {
