@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.domain.Book;
 import model.domain.User;
 
 public class UserRepository {
@@ -45,4 +46,22 @@ public class UserRepository {
 		return true;
 	}
 
+	public Book borrowBook(Book book, User user) {
+		User foundUser =  getUser(user.getId());
+    	ArrayList<Book> userBookList = foundUser.getBookList();
+    	userBookList.add(book);
+    	return book;	
+    }
+	
+	public Book returnBook(Book book, User user) {
+		User foundUser =  getUser(user.getId());
+    	ArrayList<Book> userBookList = foundUser.getBookList();
+    	
+    	for (int i=0;i<userBookList.size();i++) {
+    		if (userBookList.get(i).getIsbn().equals(book.getIsbn())) {
+    			return userBookList.remove(i);
+    		}
+    	}
+    	return null;	
+	}
 }
