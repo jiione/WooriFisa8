@@ -15,7 +15,7 @@ public class StartView {
 	private static Scanner scanner = new Scanner(System.in);
 
 	private static UserService userService = new UserService();
-	private static BookController BookController = new BookController();
+	private static BookController bookController = new BookController();
 	private static UserController userController = new UserController();
 
 	public static void main(String[] args) {
@@ -63,7 +63,7 @@ public class StartView {
 
 			switch (choice) {
 			case 1:
-				BookController.viewAllBooks();
+				bookController.viewAllBooks();
 				break;
 			case 2:
 				borrowBook(user);
@@ -72,30 +72,38 @@ public class StartView {
 				returnBook(user);
 				break;
 			case 4:
+				EndView.bookListView(userService.readBorrowedBook(user));
+				break;
+			case 5:
+				userController.viewAllUsers();
+				break;
+			case 6:
 				if ("ADMIN".equals(user.getRole())) {
 					addUser(user);
 				} else {
 					System.out.println("권한이 없습니다.");
 				}
 				break;
-			case 5:
+			
+			case 7:
 				if ("ADMIN".equals(user.getRole())) {
 					removeUser(user);
 				} else {
 					System.out.println("권한이 없습니다.");
 				}
 				break;
-			case 6:
+			
+			case 8:
 				if ("ADMIN".equals(user.getRole())) {
 					addBook(user);
 				} else {
 					System.out.println("권한이 없습니다.");
 				}
 				break;
-			case 7:
-				if ("ADMIN".equals(user.getRole())) {
+			case 9:
+				if("ADMIN".equals(user.getRole())) {
 					removeBook(user);
-				} else {
+				}else {
 					System.out.println("권한이 없습니다.");
 				}
 				break;
@@ -111,13 +119,13 @@ public class StartView {
 	private static void borrowBook(User user) {
 		System.out.print("대출할 도서 ISBN을 입력하세요: ");
 		String isbn = scanner.nextLine();
-		BookController.borrowBook(isbn, user);
+		bookController.borrowBook(isbn, user);
 	}
 
 	private static void returnBook(User user) {
 		System.out.print("반납할 도서 ISBN을 입력하세요: ");
 		String isbn = scanner.nextLine();
-		BookController.returnBook(isbn, user);
+		bookController.returnBook(isbn, user);
 	}
 
 	private static void addUser(User admin) {
@@ -154,12 +162,12 @@ public class StartView {
 		String author = scanner.nextLine();
 
 		Book newBook = new Book(isbn, title, author, false);
-		BookController.addBook(newBook, admin);
+		bookController.addBook(newBook, admin);
 	}
 
 	private static void removeBook(User admin) {
 		System.out.print("삭제할 도서 ISBN을 입력하세요: ");
 		String isbn = scanner.nextLine();
-		BookController.removeBook(isbn, admin);
+		bookController.removeBook(isbn, admin);
 	}
 }
