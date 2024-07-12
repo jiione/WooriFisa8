@@ -65,4 +65,8 @@ public class UserRepository {
 		}
 		return null;
 	}
+	
+	public ArrayList<Book> findAllBorrowedBook(User user){
+		return user.getBookList();
+	}
 }

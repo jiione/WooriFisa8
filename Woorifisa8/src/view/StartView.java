@@ -50,11 +50,13 @@ public class StartView {
 	            System.out.println("1. 전체 도서 조회");
 	            System.out.println("2. 도서 대출");
 	            System.out.println("3. 도서 반납");
+	            System.out.println("4. 빌린 도서 조회");
 	            if ("ADMIN".equals(user.getRole())) {
-	                System.out.println("4. 유저 추가");
-	                System.out.println("5. 유저 삭제");
-	                System.out.println("6. 도서 추가");
-	                System.out.println("7. 도서 삭제");
+	                System.out.println("5. 전체 유저 조회");
+	                System.out.println("6. 유저 추가");
+	                System.out.println("7. 유저 삭제");
+	                System.out.println("8. 도서 추가");
+	                System.out.println("9. 도서 삭제");
 	            }
 	            System.out.println("0. 로그아웃");
 	            System.out.print("선택: ");
