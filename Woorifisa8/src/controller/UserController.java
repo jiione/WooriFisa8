@@ -25,4 +25,8 @@ public class UserController {
             FailView.failMessage("Failed to remove user. Only admins can remove users.");
         }
     }
+    
+    public void viewAllUsers() {
+        EndView.userListView(userService.getAllUsers());
+    }
 }

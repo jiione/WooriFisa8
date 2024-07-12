@@ -35,8 +35,11 @@ public class UserRepository {
 	}
 
 	public User addUser(User user) {
+		
 		String userId = user.getId();
-		return userList.put(userId, user);
+		userList.put(userId, user);
+		return user;
+		
 	}
 
 	public boolean deleteUser(String userId) {

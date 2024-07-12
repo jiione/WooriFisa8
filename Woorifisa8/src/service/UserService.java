@@ -27,7 +27,6 @@ public class UserService {
 		}
 		return true;
 	}
-	
 
 	public User getUser(String userId) {
 		return userRepository.getUserById(userId);
@@ -36,8 +35,10 @@ public class UserService {
 	// 유저 추가
 	public User addUser(String adminId, String adminPw, User user) {
 		if (validateAdmin(adminId, adminPw)) {
+
 			return userRepository.addUser(user);
 		}
+
 		return null;
 	}
 
@@ -58,10 +59,14 @@ public class UserService {
 	public Book returnBook(Book book, User user) {
 		return userRepository.returnBook(book, user);
 	}
-	
-	//유저가 빌린 도서 조회
-	public ArrayList<Book> readBorrowedBook(User user){
-		
+
+	// 유저가 빌린 도서 조회
+	public ArrayList<Book> readBorrowedBook(User user) {
 		return userRepository.findAllBorrowedBook(user);
+	}
+
+	// 전체 유저 리스트 조회
+	public Map<String, User> getAllUsers() {
+		return userRepository.getAllUsers();
 	}
 }
