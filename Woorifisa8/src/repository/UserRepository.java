@@ -1,14 +1,49 @@
 package repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import lombok.NoArgsConstructor;
 import model.domain.User;
 
-@NoArgsConstructor
 public class UserRepository {
-	Map<String, User> userList = new HashMap()<>;
-	
-	
+	private Map<String, User> userList;
+	private static UserRepository instance = new UserRepository();
+
+	private UserRepository() {
+		userList = new HashMap<>();
+	}
+
+	private static UserRepository getInstance() {
+		return instance;
+	}
+
+	public List<User> getAllUsers() {
+		return new ArrayList<>(userList.values());
+	}
+
+	public User addUser(User user) {
+		String userId = user.getId();
+		return userList.put(userId, user);
+	}
+
+	public boolean deleteUser(String userId) {
+		return userList.remove(userId) != null;
+	}
+
+	public User getUser(String userId) {
+		return userList.get(userId); // nullable
+	}
+
+	public boolean isLoginSuccess(String userId, String password) {
+		User user = userList.get(userId);
+
+		if (user != null && user.getPw().equals(password)) {
+			return false;
+		}
+		return true;
+
+	}
+
 }
