@@ -14,9 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class User {
-    private String role;
-    private String name;
-    private String id;
-    private String pw;
-    private ArrayList<Book> bookList;
+	private String role;
+	private String name;
+	private String id;
+	private String pw;
+	private ArrayList<Book> bookList;
 }
