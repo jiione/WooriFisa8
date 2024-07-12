@@ -63,6 +63,11 @@ public class UserRepository {
 				return userBookList.remove(i);
 			}
 		}
+
 		return null;
+	}
+
+	public ArrayList<Book> findAllBorrowedBook(User user) {
+		return user.getBookList();
 	}
 }
