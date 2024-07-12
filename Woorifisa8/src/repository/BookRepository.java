@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import model.domain.Book;
 
 public class BookRepository {
-	private static ArrayList<Book> bookList = new ArrayList<>();
+	private static BookRepository instance = new BookRepository();
+	private ArrayList<Book> bookList = new ArrayList<>();
+	private BookRepository() {}
+	
+	public static BookRepository getInstance() {
+		return instance;
+	}
 	
 	public boolean deleteBookByIsbn(String Isbn) {
 		for(Book book : bookList) {

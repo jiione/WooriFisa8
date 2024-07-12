@@ -2,14 +2,13 @@ package service;
 
 import java.util.ArrayList;
 
-import lombok.RequiredArgsConstructor;
 import model.domain.Book;
 import model.domain.User;
 import repository.BookRepository;
 
-@RequiredArgsConstructor
+
 public class LibraryService {
-	private final BookRepository bookRepository;
+	private final BookRepository bookRepository = BookRepository.getInstance();
 
 	public Book borrowBook (String Isbn, User user) {
 		if(user.getRole().equals("USER")==true) {
