@@ -27,10 +27,13 @@ public class LibraryService {
 	public Book returnBook(String Isbn, User user) {
 		
 		Book book = bookRepository.findBookByIsbn(Isbn);
-		book.setStatus(false);
-		userRepository.returnBook(book, user);
+		if(book.isStatus()==true) {
+			book.setStatus(false);
+			userRepository.returnBook(book, user);
+			return book;
+		}
 		
-		return book;
+		return null;
 	}
 
 	public ArrayList<Book> searchAllBook() {
