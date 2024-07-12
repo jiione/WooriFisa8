@@ -27,7 +27,6 @@ public class UserService {
 		}
 		return true;
 	}
-	
 
 	public User getUser(String userId) {
 		return userRepository.getUserById(userId);
@@ -36,8 +35,10 @@ public class UserService {
 	// 유저 추가
 	public User addUser(String adminId, String adminPw, User user) {
 		if (validateAdmin(adminId, adminPw)) {
+
 			return userRepository.addUser(user);
 		}
+
 		return null;
 	}
 
