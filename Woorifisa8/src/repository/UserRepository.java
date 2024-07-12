@@ -15,7 +15,7 @@ public class UserRepository {
 		userList = new HashMap<>();
 	}
 
-	private static UserRepository getInstance() {
+	public static UserRepository getInstance() {
 		return instance;
 	}
 
@@ -43,7 +43,6 @@ public class UserRepository {
 			return false;
 		}
 		return true;
-
 	}
 
 }
