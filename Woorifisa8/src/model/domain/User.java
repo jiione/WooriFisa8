@@ -1,9 +1,12 @@
 package model.domain;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import model.domain.Book;
 
 @Getter
 @Setter
@@ -14,4 +17,5 @@ public class User {
     private String name;
     private String id;
     private String pw;
+    private ArrayList<Book> bookList;
 }
