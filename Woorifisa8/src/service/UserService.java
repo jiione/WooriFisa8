@@ -59,4 +59,10 @@ public class UserService {
 	public Book returnBook(Book book, User user) {
 		return userRepository.returnBook(book, user);
 	}
+	
+	//유저가 빌린 도서 조회
+	public ArrayList<Book> readBorrowedBook(User user){
+		
+		return userRepository.findAllBorrowedBook(user);
+	}
 }
