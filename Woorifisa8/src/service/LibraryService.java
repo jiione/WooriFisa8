@@ -13,7 +13,7 @@ public class LibraryService {
 	public Book borrowBook (String Isbn, User user) {
 		if(user.getRole().equals("USER")==true) {
 			Book book = bookRepository.findBookByIsbn(Isbn);
-			if(book!=null) {
+			if(book!=null && book.isStatus()==false) {
 				book.setStatus(true);
 			}
 			else return null;
