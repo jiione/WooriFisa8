@@ -15,6 +15,7 @@ public class LibraryService {
 			Book book = bookRepository.findBookByIsbn(Isbn);
 			if(book!=null && book.isStatus()==false) {
 				book.setStatus(true);
+				
 			}
 			else return null;
 		}
